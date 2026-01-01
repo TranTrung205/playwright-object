@@ -7,7 +7,7 @@ test('E2E: Login → Add to cart → Logout', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const inventoryPage = new InventoryPage(page);
   const menuPage = new MenuPage(page);
-
+// test CI trigger
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
 
