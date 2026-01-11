@@ -21,7 +21,7 @@ test('Signup flow', async ({ page }) => {
     // 2. Navigate to url 'https://www.automationexercise.com'
     await homePage.open();
     // 3. Verify that home page is visible successfully
-    await homePage.verifyHomePageVisible;
+    await homePage.waitForHomePageLoaded;
     // 4. Click on 'Signup / Login' button
     await homePage.clickOnLoginOrSignupBtn();
     // 5. Verify 'New User Signup!' is visible
@@ -58,6 +58,7 @@ test('Signup flow', async ({ page }) => {
     await accountCreatedPage.verifyAccountCreatedTxTVisible();
     // 15. Click 'Continue' button
     await accountCreatedPage.clickContinueButton();
+    await homePage.waitForHomePageLoaded();
     // 16. Verify that 'Logged in as username' is visible
     await homePage.verifyLoggedInAsUsernameVisible();
     // 17. Click 'Delete Account' button

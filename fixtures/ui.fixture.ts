@@ -11,9 +11,7 @@ export const test = base.extend<UiFixtures>({
   loggedInPage: async ({ browser }, use) => {
     const context = await browser.newContext();
     const page = await context.newPage();
-
     await page.goto('http://automationexercise.com');
-
     await context.close();
   }
 });
