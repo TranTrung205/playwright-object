@@ -1,10 +1,9 @@
-import { test } from '@playwright/test';
+import { test } from '../fixtures/ui.fixture';
+import { LoginPage } from '../pages/login/login.page';
 
-test('open automationexercise directly', async ({ page }) => {
-  await page.goto('https://www.automationexercise.com', {
-    waitUntil: 'domcontentloaded',
-    timeout: 60000,
-  });
+test('Login success', async ({ page }) => {
+  const loginPage = new LoginPage(page);
 
-  await page.waitForTimeout(5000);
+  await loginPage.goto();
+  await loginPage.login('test@mail.com', '123456');
 });
