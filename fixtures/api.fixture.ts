@@ -1,30 +1,21 @@
-// Fixture là function chạy trước test để chuẩn bị context hoặc dữ liệu cần thiết cho test
-//Fixtures are used to prepare test preconditions and shared contexts, such as authentication or logged-in state,
-// so that tests are clean, reusable, and easier to maintain
-
-import { test as base, expect } from '@playwright/test';
+import { test as base, request, APIRequestContext, expect } from '@playwright/test';
 
 type ApiFixtures = {
-    token: string;
+  apiContext: APIRequestContext;
 };
 
 export const test = base.extend<ApiFixtures>({
-    token: async ({ request }, use) => {
-        const response = await request.post(
-            '',
-            {
-                data: {
-                    username: process.env.USERNAME || '',
-                    password: process.env.PASSWORD || ''
-                }
-            }
-        );
+  apiContext: async ({}, use) => {
+    const apiContext = await request.newContext({
+      baseURL: 'https://restful-booker.herokuapp.com',
+      extraHTTPHeaders: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-        expect(response.status()).toBe(200);
-
-        const body = await response.json();
-        await use(body.token);
-    }
+    await use(apiContext);
+    await apiContext.dispose();
+  },
 });
 
 export { expect };

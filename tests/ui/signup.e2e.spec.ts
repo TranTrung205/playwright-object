@@ -1,13 +1,13 @@
 // Import các thư viện cần thiết
 import { test, expect } from '@playwright/test';
 //  Import SignupPage từ thư mục pages
-import { SignupPage } from '../pages/signup/signup.page';
+import { SignupPage } from '../../pages/signup/signup.page';
 // Import HomePage để sử dụng các hành vi của trang chủ
-import { HomePage } from '../pages/home/home.page';
+import { HomePage } from '../../pages/home/home.page';
 // Import AccountCreatedPage để sử dụng các hành vi của trang Account Created
-import { AccountCreatedPage } from '../pages/account_created/accountCreated.page';
+import { AccountCreatedPage } from '../../pages/account_created/accountCreated.page';
 // Import AccountDeletedPage để sử dụng các hành vi của trang Account Deleted
-import { AccountDeletedPage } from '../pages/account_deleted/accountDeleted.page';
+import { AccountDeletedPage } from '../../pages/account_deleted/accountDeleted.page';
 
 // Test Case 1: Register User
 /*---------------------------------------------------------------------------------*/
