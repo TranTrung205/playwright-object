@@ -1,20 +1,16 @@
-import { BaseApi } from './base.api';
+import { APIRequestContext, expect } from '@playwright/test';
 
-export class BookingApi extends BaseApi {
+export class BookingApi {
+  constructor(private request: APIRequestContext) {}
 
-  createBooking(data: any) {
-    return this.post('/booking', data);
-  }
+  async createBooking(payload: any) {
+    const response = await this.request.post('/booking', {
+      data: payload,
+    });
 
-  getBooking(id: number) {
-    return this.get(`/booking/${id}`);
-  }
+    expect(response.status()).toBe(200);
 
-  updateBooking(id: number, data: any, token: string) {
-    return this.put(`/booking/${id}`, data, token);
-  }
-
-  deleteBooking(id: number, token: string) {
-    return this.delete(`/booking/${id}`, token);
+    const body = await response.json();
+    return body;
   }
 }
