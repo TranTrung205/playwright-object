@@ -18,4 +18,20 @@ export class BookingApi {
     expect(response.status()).toBe(200);
     return await response.json();
   }
+
+  async updateBooking(
+  bookingId: number,
+  token: string,
+  payload: any
+) {
+  const response = await this.request.put(`/booking/${bookingId}`, {
+    data: payload,
+    headers: {
+      Cookie: `token=${token}`,
+    },
+  });
+
+  expect(response.status()).toBe(200);
+  return await response.json();
+}
 }
