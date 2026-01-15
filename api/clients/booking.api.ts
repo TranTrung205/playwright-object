@@ -20,18 +20,34 @@ export class BookingApi {
   }
 
   async updateBooking(
-  bookingId: number,
-  token: string,
-  payload: any
-) {
-  const response = await this.request.put(`/booking/${bookingId}`, {
-    data: payload,
-    headers: {
-      Cookie: `token=${token}`,
-    },
-  });
+    bookingId: number,
+    token: string,
+    payload: any
+  ) {
+    const response = await this.request.put(`/booking/${bookingId}`, {
+      data: payload,
+      headers: {
+        Cookie: `token=${token}`,
+      },
+    });
 
-  expect(response.status()).toBe(200);
-  return await response.json();
-}
+    expect(response.status()).toBe(200);
+    return await response.json();
+  }
+
+  async patchBooking(
+    bookingId: number,
+    token: string,
+    payload: any
+  ) {
+    const response = await this.request.patch(`/booking/${bookingId}`, {
+      data: payload,
+      headers: {
+        Cookie: `token=${token}`,
+      },
+    });
+
+    expect(response.status()).toBe(200);
+    return await response.json();
+  }
 }
