@@ -50,4 +50,14 @@ export class BookingApi {
     expect(response.status()).toBe(200);
     return await response.json();
   }
+
+  async deleteBooking(bookingId: number, token: string) {
+    const response = await this.request.delete(`/booking/${bookingId}`, {
+      headers: {
+        Cookie: `token=${token}`,
+      },
+    });
+
+    expect(response.status()).toBe(201);
+  }
 }
