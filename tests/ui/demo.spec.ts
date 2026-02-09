@@ -1,5 +1,5 @@
-import { test } from '../fixtures/ui.fixture';
-import { LoginPage } from '../pages/login/login.page';
+import { test } from '../../fixtures/ui.fixture';
+import { LoginPage } from '../../pages/login/login.page';
 
 test('Login success', async ({ page }) => {
   const loginPage = new LoginPage(page);
